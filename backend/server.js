@@ -2,30 +2,20 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 
+import menuRoutes from "./routes/menu.route.js"
+
 dotenv.config();
 
 const app = express();
 
-app.post("/menu", async (req, res) => {
-    const menu = req.body;  //owner will input here
+app.use(express.json()); // allows us to accept json data in the req.body
 
-    if(!menu.name || !menu.price || !menu.description || !menu.image) {
-        return res.status(400).json({ success:false, message: "Please fill in all fields" });
-    }
+app.use("/api/menu/", menuRoutes)
 
-    const newMenu = new Menu(menu);
+const PORT = process.env.PORT || 5000;
 
-    try{
-        await newMenu.save();
-        res.status(201).json({success:true, data: newMenu})
-    }catch(error){
-        console.error("Error occured while creating a Menu:", error.message);
-        res.status(500).json({success:false, message: "Server Error"});
-    }
-});
-
-app.listen(3000, () => {
+app.listen(PORT, () => {
     connectDB();
-    console.log("Server is running on port http://localhost:3000");
+    console.log("Server is running on port http://localhost:" + PORT);
 });
 
