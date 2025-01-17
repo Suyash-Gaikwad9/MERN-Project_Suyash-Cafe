@@ -88,6 +88,10 @@ const MenuCard = ({ menu }) => {
                 ₹{menu.price}
 				</Text>
 
+				<Text fontWeight='bold' fontSize='xl' color={textColor} mb={4}>
+                {menu.description}
+				</Text>
+
 				<HStack spacing={2}>
 					<IconButton icon={<EditIcon />} onClick={onOpen} colorScheme='blue' />
 					<IconButton

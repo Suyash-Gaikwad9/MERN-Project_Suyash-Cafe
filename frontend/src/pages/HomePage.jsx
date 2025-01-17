@@ -22,7 +22,7 @@ const HomePage = () => {
           bgClip={"text"}
           textAlign={"center"}
         >
-          Latest Dishes 🚀
+          Add your favorite dish 🚀
         </Text>
 
         <SimpleGrid
