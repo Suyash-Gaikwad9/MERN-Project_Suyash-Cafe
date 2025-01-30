@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"  # Expose backend port
+    networks:
+      - mern-network
+    volumes:
+      - ./backend:/app  # Map the backend directory in the container to the host's backend directory
+    environment:
+      - MONGO_URI=mongodb+srv://suyashus:KSmn1Ww4JyTOrTSA@cluster0.e2i8x.mongodb.net/menu?retryWrites=true&w=majority&appName=Cluster0
+    # Removed mongo service since we're using MongoDB Atlas
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"  # Exposing frontend on localhost:5173
+    networks:
+      - mern-network
+    volumes:
+      - ./frontend:/app  # Map the frontend directory in the container to the host's frontend directory
+
+networks:
+  mern-network:
+    driver: bridge
