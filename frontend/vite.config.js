@@ -14,3 +14,6 @@ export default defineConfig({
     },
   },
 });
+
+
+//  mention target: "http://localhost:3000", // to Use service name in local environment

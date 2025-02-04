@@ -2,10 +2,10 @@
   "name": "mern-project-hotel-menu",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon backend/server.js"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
